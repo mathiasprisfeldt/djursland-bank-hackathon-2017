@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxMoveTime = 3;
     [SerializeField] private float _passiveSpeed = 5;
 
+    public Animator Animator;
+
     private Vector2 _passiveDirection;
     private float _passiveTimer;
     private bool _moveToMouse;
