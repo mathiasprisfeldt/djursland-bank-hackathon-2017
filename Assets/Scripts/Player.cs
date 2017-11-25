@@ -8,12 +8,12 @@ public class Player : MonoBehaviour
     private Vector2 _targetPos;
 
     [SerializeField] private BoxCollider2D _container;
-    [SerializeField] private float _speed = 500;
+    [SerializeField] private float _speed = 20;
     [SerializeField] private float _distanceThreshold = 0.1f;
 
     [SerializeField] private float _minMoveTime = 1;
     [SerializeField] private float _maxMoveTime = 3;
-    [SerializeField] private float _passiveSpeed = 400;
+    [SerializeField] private float _passiveSpeed = 5;
 
     private Vector2 _passiveDirection;
     private float _passiveTimer;
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         if (Vector2.Distance(transform.position, _targetPos) > _distanceThreshold && _moveToMouse)
         {
             RigidBody2D.AddForce(
-                transform.position.DirectionTo2D(_targetPos) * _speed * Time.deltaTime);
+                transform.position.DirectionTo2D(_targetPos) * _speed * Time.deltaTime,ForceMode2D.Impulse);
         }
         else if(_moveToMouse)
             _moveToMouse = false;
@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            RigidBody2D.AddForce(_passiveDirection * _passiveSpeed * Time.deltaTime);
+            RigidBody2D.AddForce(_passiveDirection * _passiveSpeed * Time.deltaTime,ForceMode2D.Impulse);
             _passiveTimer -= Time.deltaTime;
         }
     }
