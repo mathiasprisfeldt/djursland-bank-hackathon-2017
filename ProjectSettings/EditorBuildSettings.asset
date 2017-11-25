@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/City.unity
     guid: 10aea71c53bf9aa468c2b9b968cc925e
+  - enabled: 1
+    path: Assets/Scenes/ParentPanel.unity
+    guid: bda7404862c2c0945b61f7b21c534a3b
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 020ce128bb7687741a3fd5e1cac8bc6b
