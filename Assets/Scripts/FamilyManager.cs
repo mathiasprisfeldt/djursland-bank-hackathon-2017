@@ -13,6 +13,8 @@ public class FamilyManager : Singleton<FamilyManager>
     public List<Child> Children { get; set; }
     public List<Duty> Duties { get; set; }
 
+    public event Action<Child> ChildAdded;
+
     public int MaxDutiesActive
     {
         get { return _maxDutiesActive; }
@@ -28,6 +30,7 @@ public class FamilyManager : Singleton<FamilyManager>
     public Child AddChild(Child child)
     {
         Children.Add(child);
+        if (ChildAdded != null) ChildAdded.Invoke(child);
         return child;
     }
 
