@@ -26,12 +26,12 @@ public class FamilyManager : Singleton<FamilyManager>
         Children = new List<Child>();
         Duties = new List<Duty>();
 
-        var child = AddChild(new Child("Tonni"));
-        AddDuty(new Duty("Vacumm", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("Test3", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("TestNow", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("TestLul", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("Yes", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        var child = AddChild(new Child("Bent"));
+        var child2 = AddChild(new Child("Katja"));
+        AddDuty(new Duty("Støvsug stuen", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("Slå græsset", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("Gå ud med skraldet", 100, Duty.TaskDifficulty.Medium)).AssignChild(child2);
+        AddDuty(new Duty("Vask op", 100, Duty.TaskDifficulty.Medium)).AssignChild(child2);
     }
 
     public Child AddChild(Child child)
