@@ -25,6 +25,13 @@ public class FamilyManager : Singleton<FamilyManager>
         base.Awake();
         Children = new List<Child>();
         Duties = new List<Duty>();
+
+        var child = AddChild(new Child("Tonni"));
+        AddDuty(new Duty("Vacumm", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("Test3", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("TestNow", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("TestLul", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
+        AddDuty(new Duty("Yes", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
     }
 
     public Child AddChild(Child child)

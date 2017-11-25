@@ -8,8 +8,10 @@ public class ChildGroup : MonoBehaviour
 {
     private VerticalLayoutGroup _verticalLayoutGroup;
 
+    [SerializeField] private UIChildSelected _childUI;
+    [SerializeField] private AddChild _childAdder;
     [SerializeField] private GameObject __emptyIcon;
-    [SerializeField] private GameObject __addIcon;
+    [SerializeField] private ChildAddIcon __addIcon;
     [SerializeField] private ChildIcon __childIcon;
     [SerializeField] private GameObject __horizontalGroupPrefab;
 
@@ -50,12 +52,12 @@ public class ChildGroup : MonoBehaviour
             if (index < FamilyManager.Instance.Children.Count)
             {
                 Child instanceChild = FamilyManager.Instance.Children[index];
-                Instantiate(__childIcon, currLayoutGroup.transform).Setup(instanceChild);
+                Instantiate(__childIcon, currLayoutGroup.transform).Setup(instanceChild).ChildUI = _childUI;
             }
         }
 
         //Create 'create' btn icon
-        Instantiate(__addIcon, currLayoutGroup.transform);
+        Instantiate(__addIcon, currLayoutGroup.transform).ChildAdder = _childAdder;
 
         if (currLayoutGroup != null && currLayoutGroup.transform.childCount == 1)
             Instantiate(__emptyIcon, currLayoutGroup.transform);
