@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float _maxMoveTime = 3;
     [SerializeField] private float _passiveSpeed = 5;
 
+    [SerializeField] private Puppet2D_GlobalControl _puppetMaster;
+
     public Animator Animator;
+
 
     private Vector2 _passiveDirection;
     private float _passiveTimer;
@@ -58,6 +61,8 @@ public class Player : MonoBehaviour
                     InteractableTarget = null;
                 }
             }
+            Animator.speed = 2f;
+            _passiveDirection = transform.position.DirectionTo2D(_targetPos);
         }
 
         if (Vector2.Distance(transform.position, _targetPos) > _distanceThreshold && _moveToMouse)
@@ -80,6 +85,8 @@ public class Player : MonoBehaviour
 
         if(!InteractableTarget && !_moveToMouse)
             HandlePassiveMovement();
+        _puppetMaster.flip = _passiveDirection.x > 0;
+        Animator.speed = 1f;
     }
 
     private void HandlePassiveMovement()
