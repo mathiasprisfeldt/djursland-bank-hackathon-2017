@@ -1,16 +1,11 @@
 ﻿using UnityEngine;
 
-namespace ChildAddIcon
+public class ChildAddIcon : MonoBehaviour 
 {
-    /// <summary>
-    /// Purpose:
-    /// Creator:
-    /// </summary>
-    public class ChildAddIcon : MonoBehaviour 
+    public AddChild ChildAdder { get; set; }
+
+    public void AddChild()
     {
-        public void AddChild()
-        {
-            FamilyManager.Instance.AddChild(new Child("Bivert"));
-        }
+        ChildAdder.gameObject.SetActive(true);
     }
 }
