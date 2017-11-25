@@ -21,6 +21,7 @@ public struct ColorSchemeColors
     [Header("Main Colors"), SerializeField] public Color FirstColor;
     [SerializeField] public Color SecondColor;
     [SerializeField] public Color ThirdColor;
+    [SerializeField] public Color FourthColor;
 
     [Header("Button Colors"), SerializeField] public Color NormalColor;
     [SerializeField] public Color HighLightedColor;
@@ -51,6 +52,7 @@ public struct ColorSchemeColors
         hash += FirstColor.GetHashCode();
         hash += SecondColor.GetHashCode();
         hash += ThirdColor.GetHashCode();
+        hash += FourthColor.GetHashCode();
         hash += NormalColor.GetHashCode();
         hash += HighLightedColor.GetHashCode();
         hash += PressedColor.GetHashCode();

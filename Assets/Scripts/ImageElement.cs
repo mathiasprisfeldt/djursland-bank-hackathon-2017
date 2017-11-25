@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public enum ImageColorType
 {
-    First, second, Third
+    First, Second, Third, Fourth
 }
 
 [ExecuteInEditMode]
@@ -43,11 +43,14 @@ public class ImageElement : ColorElement
             case ImageColorType.First:
                 color = Handler.Scheme.Colors.FirstColor;
                 break;
-            case ImageColorType.second:
+            case ImageColorType.Second:
                 color = Handler.Scheme.Colors.SecondColor;
                 break;
             case ImageColorType.Third:
                 color = Handler.Scheme.Colors.ThirdColor;
+                break;
+            case ImageColorType.Fourth:
+                color = Handler.Scheme.Colors.FourthColor;
                 break;
         }
         _image.color = _useAlpha ? color : new Color(color.r, color.g, color.b,_image.color.a);
