@@ -24,11 +24,21 @@ public class Player : MonoBehaviour
     private float _passiveTimer;
     private bool _moveToMouse;
 
-    public Interactable InteractableTarget { get; private set; }
+    public Interactable InteractableTarget { get; set; }
 
     public Rigidbody2D RigidBody2D
     {
         get { return _rigidbody2D; }
+    }
+
+    public Vector2 PassiveDirection
+    {
+        get { return _passiveDirection; }
+    }
+
+    public bool LookDir
+    {
+        get { return _puppetMaster.flip; }
     }
 
     void Awake()
@@ -57,8 +67,6 @@ public class Player : MonoBehaviour
                 {
                     if (InteractableTarget.IsInteracted)
                         InteractableTarget.OnExit(this);
-
-                    InteractableTarget = null;
                 }
             }
             Animator.speed = 2f;
@@ -73,8 +81,6 @@ public class Player : MonoBehaviour
         else if(_moveToMouse)
             _moveToMouse = false;
 
-
-
         if (InteractableTarget && Vector2.Distance(transform.position, _targetPos) <=
             InteractableTarget.DistanceBeforeEnter &&
             !InteractableTarget.IsInteracted)
@@ -85,26 +91,26 @@ public class Player : MonoBehaviour
 
         if(!InteractableTarget && !_moveToMouse)
             HandlePassiveMovement();
-        _puppetMaster.flip = _passiveDirection.x > 0;
+        _puppetMaster.flip = PassiveDirection.x > 0;
         Animator.speed = 1f;
     }
 
     private void HandlePassiveMovement()
     {
-        var hit = Physics2D.Raycast(transform.position, _passiveDirection,1,LayerMask.GetMask("Wall"));
-        Debug.DrawRay(transform.position, _passiveDirection * 1);
+        var hit = Physics2D.Raycast(transform.position, PassiveDirection,1,LayerMask.GetMask("Wall"));
+        Debug.DrawRay(transform.position, PassiveDirection * 1);
         if (_passiveTimer <= 0 || hit.collider) 
         {
             var random = Random.Range(0, 2);
             if (hit.collider)
-                _passiveDirection = -_passiveDirection;
+                _passiveDirection = -PassiveDirection;
             else
                 _passiveDirection = new Vector2(random == 0 ? -1 : 1,0);
             _passiveTimer = Random.Range(_minMoveTime, _maxMoveTime);
         }
         else
         {
-            RigidBody2D.AddForce(_passiveDirection * _passiveSpeed * Time.deltaTime,ForceMode2D.Impulse);
+            RigidBody2D.AddForce(PassiveDirection * _passiveSpeed * Time.deltaTime,ForceMode2D.Impulse);
             _passiveTimer -= Time.deltaTime;
         }
     }

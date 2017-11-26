@@ -42,5 +42,7 @@ public class Interactable : MonoBehaviour, IPointerClickHandler
 
         if (Exit != null)
             Exit.Invoke();
+
+        ply.InteractableTarget = null;
     }
 }
