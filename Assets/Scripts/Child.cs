@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 public class Child
 {
@@ -12,16 +13,16 @@ public class Child
         Name = name;
     }
 
-    public bool AddDuty(Duty duty)
+    public Duty AddDuty(Duty duty)
     {
         if (Duties == null)
             Duties = new List<Duty>();
 
-        if (Duties.Count >= FamilyManager.Instance.MaxDutiesActive)
-            return false;
+        if (Duties.Count(duty1 => !duty1.IsCompleted) >= FamilyManager.Instance.MaxDutiesActive)
+            return null;
 
         Duties.Add(duty);
-        return true;
+        return duty;
     }
 
     public void GiveReward(float inGame, float real)

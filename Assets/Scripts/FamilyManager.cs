@@ -26,12 +26,20 @@ public class FamilyManager : Singleton<FamilyManager>
         Children = new List<Child>();
         Duties = new List<Duty>();
 
-        var child = AddChild(new Child("Bent"));
-        var child2 = AddChild(new Child("Katja"));
-        AddDuty(new Duty("Støvsug stuen", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("Slå græsset", 100, Duty.TaskDifficulty.Medium)).AssignChild(child);
-        AddDuty(new Duty("Gå ud med skraldet", 100, Duty.TaskDifficulty.Medium)).AssignChild(child2);
-        AddDuty(new Duty("Vask op", 100, Duty.TaskDifficulty.Medium)).AssignChild(child2);
+        var child = AddChild(new Child("Tobias"));
+        var child2 = AddChild(new Child("Maria"));
+        var child3 = AddChild(new Child("Erik"));
+
+        AddDuty(new Duty("Støvsug stuen", 10, Duty.TaskDifficulty.Medium)).AssignChild(child).Finish();
+        AddDuty(new Duty("Slå græsset", 15, Duty.TaskDifficulty.Medium)).AssignChild(child).Finish();
+        AddDuty(new Duty("Gå ud med skraldet", 5, Duty.TaskDifficulty.Medium)).AssignChild(child).Finish();
+        AddDuty(new Duty("Vask op", 5, Duty.TaskDifficulty.Medium)).AssignChild(child);
+
+        AddDuty(new Duty("Besøg Mormor", 20, Duty.TaskDifficulty.Medium)).AssignChild(child2).Finish();
+        AddDuty(new Duty("Vask vinduer", 15, Duty.TaskDifficulty.Medium)).AssignChild(child2);
+        AddDuty(new Duty("Rengør dit værelse", 5, Duty.TaskDifficulty.Medium)).AssignChild(child2);
+
+        AddDuty(new Duty("Hjælp med aftensmaden", 5, Duty.TaskDifficulty.Medium)).AssignChild(child3);
     }
 
     public Child AddChild(Child child)

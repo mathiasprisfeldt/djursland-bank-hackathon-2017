@@ -19,16 +19,10 @@ public class AddDuty : MonoBehaviour
 
         DateTime dueDate = DateTime.MinValue;
         if (_dueDate.text != String.Empty)
-        {
             DateTime.TryParse(_dueDate.text, out dueDate);
-            if (dueDate == DateTime.MinValue)
-                return;
-        }
 
         float reward;
         Single.TryParse(_reward.text, out reward);
-        if (reward == 0)
-            return;
 
         FamilyManager.Instance.AddDuty(new Duty(_navn.text, reward, (Duty.TaskDifficulty)_difficulty.value)
         {

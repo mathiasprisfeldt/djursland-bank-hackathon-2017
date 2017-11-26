@@ -10,6 +10,6 @@ public class BalanceText : MonoBehaviour
     {
         var sum = FamilyManager.Instance.Children.Sum(child => child.RealCurrency);
 
-        _text.text = (sum == 0 ? "" : "-" ) + sum;
+        _text.text = (sum == 0 ? "" : "-" ) + sum + "kr";
     }
 }

@@ -29,16 +29,18 @@ public class Duty
         Difficulty = difficulty;
     }
 
-    public void AssignChild(Child child)
+    public Duty AssignChild(Child child)
     {
         if (AssignedChildren == null)
             AssignedChildren = new List<Child>();
 
         if (AssignedChildren.Contains(child))
-            return;
+            return null;
 
-        if (child.AddDuty(this))
+        var newDuty = child.AddDuty(this);
+        if (newDuty != null)
             AssignedChildren.Add(child);
+        return newDuty;
     }
 
     public void Finish()

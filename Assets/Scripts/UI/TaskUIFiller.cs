@@ -10,7 +10,7 @@ public class TaskUIFiller : MonoBehaviour
         Clean();
 
         if (child.Duties != null && child.Duties.Any())
-            foreach (Duty duty in child.Duties)
+            foreach (Duty duty in child.Duties.OrderBy(duty => duty.IsCompleted))
             {
                 Instantiate(__taskPrefab, transform).Setup(duty);
             }

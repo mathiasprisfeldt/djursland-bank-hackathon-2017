@@ -619,8 +619,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cam: {fileID: 782026570}
-  _virtualWidth: 1920
-  _virtualHeight: 1080
+  _virtualWidth: 1280
+  _virtualHeight: 720
 --- !u!114 &782026574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1535,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1683356800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: 510, z: 0}
+  m_LocalPosition: {x: 486, y: 324, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1896332957}
@@ -1741,7 +1741,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1896332956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 910, y: 460, z: 0}
+  m_LocalPosition: {x: 436, y: 274, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1683356806}
