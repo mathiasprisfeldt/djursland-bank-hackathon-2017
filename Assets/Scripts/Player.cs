@@ -73,10 +73,10 @@ public class Player : MonoBehaviour
             _passiveDirection = transform.position.DirectionTo2D(_targetPos);
         }
 
-        if (Vector2.Distance(transform.position, _targetPos) > _distanceThreshold && _moveToMouse)
+        if (Mathf.Abs(transform.position.x - _targetPos.x) > _distanceThreshold && _moveToMouse)
         {
-            RigidBody2D.AddForce(
-                transform.position.DirectionTo2D(_targetPos) * _speed * Time.deltaTime,ForceMode2D.Impulse);
+            Vector2 direction = new Vector2(_targetPos.x > transform.position.x ? 1 : -1,0);
+            RigidBody2D.AddForce(direction * _speed * Time.deltaTime,ForceMode2D.Impulse);
         }
         else if(_moveToMouse)
             _moveToMouse = false;
