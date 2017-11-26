@@ -17,4 +17,12 @@ public class GameManager : Singleton<GameManager>
     {
         Player = FindObjectOfType<Player>();
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
